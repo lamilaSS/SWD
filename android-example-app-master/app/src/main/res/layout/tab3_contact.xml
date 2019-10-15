@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.back4app.barbershopapp.MenuActivity$PlaceholderFragment"
-    android:background="@drawable/background_tools_light">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"

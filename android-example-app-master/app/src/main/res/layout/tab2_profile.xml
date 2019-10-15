@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_tools_dark"
+    android:background="@color/white"
     tools:context="com.example.back4app.barbershopapp.MenuActivity$PlaceholderFragment">
 
     <RelativeLayout
@@ -46,7 +46,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:textSize="28sp"
-                android:textColor="#cfb881"
+                android:textColor="#2B2B2B"
                 android:fontFamily="@font/roboto_regular"
                 android:gravity="center_horizontal" />
 
@@ -71,6 +71,7 @@
                 <ImageView
                     android:id="@+id/appointments"
                     android:src="@drawable/btn_appointments"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:layout_width="160dp"
                     android:layout_height="160dp" />
 
@@ -79,6 +80,7 @@
                     android:src="@drawable/btn_history"
                     android:layout_marginLeft="30dp"
                     android:layout_marginStart="30dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:layout_width="160dp"
                     android:layout_height="160dp" />
             </LinearLayout>

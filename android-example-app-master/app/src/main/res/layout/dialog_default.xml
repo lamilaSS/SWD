@@ -45,6 +45,7 @@
             android:textColor="@color/white"
             android:background="@drawable/button_black"
             android:fontFamily="@font/roboto_medium"
+            android:foreground="?android:attr/selectableItemBackground"
             android:text="@string/ok" />
 
     </LinearLayout>

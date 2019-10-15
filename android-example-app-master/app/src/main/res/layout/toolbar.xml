@@ -5,7 +5,7 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="?attr/colorPrimaryDark"
+    android:background="@color/white"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     app:layout_scrollFlags="scroll|enterAlways"
     app:layout_collapseMode="pin">
@@ -16,7 +16,7 @@
         <!-- This is a centered logo -->
         <ImageView
             android:id="@+id/toolbar_logo"
-            android:src="@drawable/logo"
+            android:src="@drawable/top"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_marginTop="6dp"

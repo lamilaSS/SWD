@@ -44,6 +44,7 @@
             android:textSize="14sp"
             android:textColor="@color/black"
             android:background="@drawable/button_border"
+            android:foreground="?android:attr/selectableItemBackground"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/no" />
 
@@ -57,6 +58,7 @@
             android:layout_marginStart="21dp"
             android:textColor="@color/white"
             android:background="@drawable/button_black"
+            android:foreground="?android:attr/selectableItemBackground"
             android:fontFamily="@font/roboto_medium"
             android:text="@string/yes" />
     </LinearLayout>

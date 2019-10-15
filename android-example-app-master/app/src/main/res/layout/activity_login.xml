@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_wood"
+    android:background="@color/white"
     tools:context="com.example.back4app.barbershopapp.LoginActivity" >
 
     <LinearLayout
@@ -26,7 +26,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:background="@drawable/background_tools_light"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -58,6 +57,7 @@
                         android:id="@+id/facebook_button"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
+                        android:foreground="?android:attr/selectableItemBackground"
                         android:src="@drawable/btn_facebook"/>
                     <ImageView
                         android:id="@+id/twitter_button"
@@ -65,6 +65,7 @@
                         android:layout_height="55dp"
                         android:layout_marginStart="80dp"
                         android:layout_marginLeft="80dp"
+                        android:foreground="?android:attr/selectableItemBackground"
                         android:src="@drawable/btn_twitter" />
 
                 </LinearLayout>
@@ -146,6 +147,7 @@
                     android:textColor="@color/white"
                     android:background="@drawable/button_black"
                     android:fontFamily="@font/roboto_medium"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:text="@string/login" />
 
                 <TextView

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_tools_dark"
+    android:background="@color/white"
     tools:context="com.example.back4app.barbershopapp.MenuActivity$PlaceholderFragment">
 
     <RelativeLayout
@@ -27,12 +27,14 @@
                     android:id="@+id/about_us"
                     android:src="@drawable/btn_about_us"
                     android:layout_width="160dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:layout_height="160dp" />
 
                 <ImageView
                     android:id="@+id/location"
                     android:src="@drawable/btn_location"
                     android:layout_marginLeft="30dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:layout_marginStart="30dp"
                     android:layout_width="160dp"
                     android:layout_height="160dp" />
@@ -50,6 +52,7 @@
                     android:id="@+id/schedule"
                     android:src="@drawable/btn_schedule"
                     android:layout_width="160dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:layout_height="160dp" />
 
                 <ImageView
@@ -58,6 +61,7 @@
                     android:layout_marginLeft="30dp"
                     android:layout_marginStart="30dp"
                     android:layout_width="160dp"
+                    android:foreground="?android:attr/selectableItemBackground"
                     android:layout_height="160dp" />
             </LinearLayout>
 

@@ -56,8 +56,8 @@ public class CustomAdapter extends BaseAdapter {
        Model m = modelItems.get(position);
 
        // title
-       title.setText("Title: " + String.valueOf(m.getTitle()));
-       category.setText("Category: "+ String.valueOf(m.getCategory()));
+       title.setText(String.valueOf(m.getTitle()));
+       category.setText(String.valueOf(m.getCategory()));
         // category
 
 

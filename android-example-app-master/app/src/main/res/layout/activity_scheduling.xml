@@ -210,6 +210,7 @@
             android:layout_marginTop="40dp"
             android:text="@string/add_appointment"
             android:textSize="14sp"
+            android:foreground="?android:attr/selectableItemBackground"
             android:textColor="@color/white"
             android:fontFamily="@font/roboto_medium" />
 
