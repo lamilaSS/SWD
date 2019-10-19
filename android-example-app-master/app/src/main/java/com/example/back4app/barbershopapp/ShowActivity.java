@@ -20,7 +20,7 @@ import java.util.List;
 
 public class ShowActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-    private static final String url ="https://swd391fa2019.azurewebsites.net/api/Activity/clubId?clubId=FCode";
+    private static final String url ="https://swd391fa2019.azurewebsites.net/api/Activity/clubId?clubId=";
     private List<Model> modelList = new ArrayList<Model>();
     private ListView listView;
     private CustomAdapter adapter;
@@ -33,8 +33,10 @@ public class ShowActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
         adapter = new CustomAdapter(this, modelList);
         listView.setAdapter(adapter);
+        Bundle bundle = getIntent().getExtras();
+        String clubName = bundle.getString("clubId");
 
-        JsonArrayRequest accReq = new JsonArrayRequest(url,
+        JsonArrayRequest accReq = new JsonArrayRequest(url + clubName,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

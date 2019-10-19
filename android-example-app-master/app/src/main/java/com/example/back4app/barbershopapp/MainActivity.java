@@ -93,7 +93,8 @@ public class MainActivity extends Activity {
                 Object listViewItem = listView.getItemAtPosition(position);
 
                 Intent intent = new Intent(MainActivity.this, ShowActivity.class);
-                intent.putExtra("clubId","AMC");
+                intent.putExtra("clubId",((Model) listViewItem).getTitle());
+
                 startActivity(intent);
 
             }
