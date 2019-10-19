@@ -1,14 +1,9 @@
 package com.example.back4app.barbershopapp;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.Response;
@@ -23,39 +18,28 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
-    // Log tag
+public class ShowActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-
-    private static final String url =" https://swd391fa2019.azurewebsites.net/api/Club/club";
-    private ProgressDialog pDialog;
-
+    private static final String url ="https://swd391fa2019.azurewebsites.net/api/Activity/clubId?clubId=FCode";
     private List<Model> modelList = new ArrayList<Model>();
     private ListView listView;
     private CustomAdapter adapter;
-
+    private ProgressDialog pDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_show);
 
         listView = (ListView) findViewById(R.id.list);
         adapter = new CustomAdapter(this, modelList);
         listView.setAdapter(adapter);
 
-        pDialog = new ProgressDialog(this);
-        // Showing progress dialog before making http request
-        pDialog.setMessage("Loading...");
-        pDialog.show();
-
-
-        // Creating volley request obj
-        JsonArrayRequest movieReq = new JsonArrayRequest(url,
+        JsonArrayRequest accReq = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
-                        hidePDialog();
+
 
                         // Parsing json
                         for (int i = 0; i < response.length(); i++) {
@@ -64,7 +48,7 @@ public class MainActivity extends Activity {
                                 JSONObject obj = response.getJSONObject(i);
                                 Model model = new Model();
                                 model.setTitle(obj.getString("clubId"));
-                                model.setCategory(obj.getString("clubName"));
+                                model.setCategory(obj.getString("activityName"));
 
                                 // adding model to movies array
                                 modelList.add(model);
@@ -82,49 +66,11 @@ public class MainActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
-                hidePDialog();
+
 
             }
         }
         );
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object listViewItem = listView.getItemAtPosition(position);
-
-                Intent intent = new Intent(MainActivity.this, ShowActivity.class);
-                intent.putExtra("clubId","AMC");
-                startActivity(intent);
-
-            }
-        });
-        // Adding request to request queue
-        App.getInstance().addToRequestQueue(movieReq);
-
+        App.getInstance().addToRequestQueue(accReq);
     }
-
-    public void setupSelectedListener(){
-
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        hidePDialog();
-    }
-
-    @Override
-    public void onBackPressed () {
-        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
-
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
-
-
 }
