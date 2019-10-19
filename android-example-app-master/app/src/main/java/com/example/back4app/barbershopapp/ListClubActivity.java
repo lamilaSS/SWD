@@ -3,10 +3,9 @@ package com.example.back4app.barbershopapp;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -23,11 +22,10 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends Activity {
-    // Log tag
-    private static final String TAG = MainActivity.class.getSimpleName();
+public class ListClubActivity extends Activity {
 
-    private static final String url =" https://swd391fa2019.azurewebsites.net/api/Club/club";
+    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String url = " https://swd391fa2019.azurewebsites.net/api/Club/club";
     private ProgressDialog pDialog;
 
     private List<Model> modelList = new ArrayList<Model>();
@@ -35,11 +33,11 @@ public class MainActivity extends Activity {
     private CustomAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list_club);
 
-        listView = (ListView) findViewById(R.id.list);
+        listView = (ListView) findViewById(R.id.list_club);
         adapter = new CustomAdapter(this, modelList);
         listView.setAdapter(adapter);
 
@@ -87,37 +85,19 @@ public class MainActivity extends Activity {
             }
         }
         );
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Object listViewItem = listView.getItemAtPosition(position);
 
-                Intent intent = new Intent(MainActivity.this, ShowActivity.class);
-                intent.putExtra("clubId",((Model) listViewItem).getTitle());
+                AlertDialog.Builder builder = new AlertDialog.Builder(ListClubActivity.this)
+                        .setTitle("Club")
+                        .setMessage("What you want to do?");
 
-                startActivity(intent);
 
             }
         });
         // Adding request to request queue
         App.getInstance().addToRequestQueue(movieReq);
-
-    }
-
-    public void setupSelectedListener(){
-
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        hidePDialog();
-    }
-
-    @Override
-    public void onBackPressed () {
-        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
     private void hidePDialog() {
@@ -126,6 +106,4 @@ public class MainActivity extends Activity {
             pDialog = null;
         }
     }
-
-
 }
