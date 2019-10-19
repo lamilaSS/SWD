@@ -28,10 +28,11 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ShowActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".WelcomeActivity"
             android:theme="@style/AppTheme.SplashScreen">
@@ -88,7 +89,6 @@
         <activity
             android:name=".ScheduledActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
             android:name=".AboutUsActivity"
             android:theme="@style/AppTheme.NoActionBar">
