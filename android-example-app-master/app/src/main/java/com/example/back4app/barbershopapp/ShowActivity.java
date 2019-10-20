@@ -77,4 +77,9 @@ public class ShowActivity extends AppCompatActivity {
         App.getInstance().addToRequestQueue(accReq);
     }
 
+    public void joinClub(View view) {
+    }
+
+    public void clickToBack(View view) {
+    }
 }

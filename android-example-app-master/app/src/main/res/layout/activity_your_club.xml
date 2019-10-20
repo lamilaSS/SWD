@@ -13,14 +13,7 @@
         android:layout_weight="0"
         />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/action"
-        android:text="Join Activity"
-        android:layout_alignParentBottom="true"
-        android:onClick="joinActivity"
-        />
+
 
 
 </RelativeLayout>
