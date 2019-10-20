@@ -77,5 +77,4 @@ public class ShowActivity extends AppCompatActivity {
         App.getInstance().addToRequestQueue(accReq);
     }
 
-
 }
