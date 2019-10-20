@@ -134,6 +134,8 @@ public class MainActivity extends Activity {
 
 
     public void clickToBack(View view) {
-        finish();
+        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 }

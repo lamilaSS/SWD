@@ -172,6 +172,8 @@ public class ShowActivity extends AppCompatActivity {
 
     }
 
+
+
     //Check student joined club
     private void isStudentJoinedClub(final String clubId, final String studentId){
         String url = "https://swd391fa2019.azurewebsites.net/api/Member/clubId?clubId=" + clubId;
@@ -210,6 +212,41 @@ public class ShowActivity extends AppCompatActivity {
         }
         );
         App.getInstance().addToRequestQueue(accReq);
+    }
+
+    private void sendWorkPutRequest(String clubName, String studentId) {
+
+        try {
+            String URL = "https://swd391fa2019.azurewebsites.net/api/Member/Join";
+            JSONObject jsonBody = new JSONObject();
+
+            jsonBody.put("clubId", clubName);
+            jsonBody.put("studentId", studentId);
+
+
+            JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.POST, URL, jsonBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                    Toast.makeText(getApplicationContext(), "Response:  " + response.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    onBackPressed();
+
+                }
+            }) {
+
+            };
+            App.getInstance().addToRequestQueue(jsonOblect);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        // Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_LONG).show();
+
     }
 
     public void clickToBack(View view) {

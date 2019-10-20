@@ -28,17 +28,11 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".YourClubActivity"></activity>
-
-
-
-
-
-
-        <activity android:name=".ShowActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
+        <activity android:name=".JoinActivity"></activity>
+        <activity android:name=".YourClubActivity" />
+        <activity
+            android:name=".ShowActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"
@@ -52,7 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListClubActivity"></activity>
+        <activity android:name=".ListClubActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

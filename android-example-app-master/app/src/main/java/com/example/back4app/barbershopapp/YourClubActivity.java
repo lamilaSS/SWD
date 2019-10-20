@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.android.volley.Response;
@@ -28,6 +30,7 @@ public class YourClubActivity extends AppCompatActivity {
     private ListView listView;
     private CustomAdapter adapter;
     private ProgressDialog pDialog;
+    private String acId = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,7 +57,7 @@ public class YourClubActivity extends AppCompatActivity {
                                 Model model = new Model();
                                 model.setTitle(obj.getString("clubId"));
                                 model.setCategory(obj.getString("activityName"));
-
+                                model.setActivities(obj.getString("activityId"));
                                 // adding model to movies array
                                 modelList.add(model);
 
@@ -76,6 +79,17 @@ public class YourClubActivity extends AppCompatActivity {
             }
         }
         );
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Object listViewItem = listView.getItemAtPosition(position);
+                Intent intent = new Intent(YourClubActivity.this, JoinActivity.class);
+                intent.putExtra("activityId", ((Model) listViewItem).getActivities());
+                intent.putExtra("clubId",((Model) listViewItem).getTitle());
+                intent.putExtra("studentId",ParseUser.getCurrentUser().get("username").toString());
+                startActivity(intent);
+            }
+        });
         App.getInstance().addToRequestQueue(yourclubReq);
     }
     @Override
