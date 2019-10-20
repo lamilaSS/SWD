@@ -28,13 +28,9 @@
         android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< Updated upstream
-        <activity android:name=".ShowActivity"></activity>
-=======
-        <activity android:name=".YourClubActivity"></activity>
+
         <activity android:name=".ShowActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
->>>>>>> Stashed changes
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main2"
