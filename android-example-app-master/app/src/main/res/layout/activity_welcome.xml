@@ -54,7 +54,7 @@ tools:context="com.example.back4app.barbershopapp.WelcomeActivity">
                 android:layout_marginTop="44dp"
                 android:gravity="center"
                 android:textSize="14sp"
-                android:textColor="@color/black"
+                android:textColor="#124a9f"
                 android:background="@drawable/button_border"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:fontFamily="@font/roboto_medium"
@@ -69,19 +69,9 @@ tools:context="com.example.back4app.barbershopapp.WelcomeActivity">
                 android:textSize="14sp"
                 android:textColor="@color/white"
                 android:fontFamily="@font/roboto_medium"
-                android:background="@drawable/button_black"
+                android:background="#124a9f"
                 android:foreground="?android:attr/selectableItemBackground"
                 android:text="@string/register" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#61512a"
-                android:layout_marginTop="26dp"
-                android:textSize="14sp"
-                android:fontFamily="@font/roboto_regular"
-                android:gravity="center_horizontal"
-                android:text="@string/no_credit_card" />
         </LinearLayout>
 
     </RelativeLayout>
@@ -96,7 +86,7 @@ tools:context="com.example.back4app.barbershopapp.WelcomeActivity">
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:layout_height="50dp"
-            app:srcCompat="@drawable/footer" />
+            app:srcCompat="@drawable/logo_fptu" />
 
     </LinearLayout>
 </LinearLayout>

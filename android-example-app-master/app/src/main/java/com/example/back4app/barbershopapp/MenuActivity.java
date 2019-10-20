@@ -164,7 +164,6 @@ public class MenuActivity extends AppCompatActivity {
                 case 2:
                     Tab3Contact tab3 = new Tab3Contact();
                     return tab3;
-
                 default:
                     return null;
             }

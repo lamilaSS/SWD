@@ -49,6 +49,7 @@ public class CustomAdapter extends BaseAdapter {
 
        TextView title = (TextView) convertView.findViewById(R.id.title);
        TextView category = (TextView) convertView.findViewById(R.id.category);
+       TextView eventdate = (TextView) convertView.findViewById(R.id.eventdate);
 
 
 
@@ -56,8 +57,9 @@ public class CustomAdapter extends BaseAdapter {
        Model m = modelItems.get(position);
 
        // title
-       title.setText(String.valueOf(m.getTitle()));
-       category.setText(String.valueOf(m.getCategory()));
+       title.setText(String.valueOf((m.getTitle()!=null) ? m.getTitle() : ""));
+       category.setText(String.valueOf((m.getCategory()!=null) ? m.getCategory() : ""));
+       eventdate.setText(String.valueOf((m.getEvent()!=null) ? m.getEvent() : ""));
         // category
 
 

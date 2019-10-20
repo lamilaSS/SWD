@@ -29,6 +29,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+<<<<<<< Updated upstream
+=======
+        <activity android:name=".YourClubActivity"></activity>
+
+
+
+
+>>>>>>> Stashed changes
         <activity android:name=".ShowActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity

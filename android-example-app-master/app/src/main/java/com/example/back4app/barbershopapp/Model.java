@@ -4,7 +4,9 @@ package com.example.back4app.barbershopapp;
 import java.io.Serializable;
 
 public class Model implements Serializable {
-    private String title, category , event;
+    private String title;
+    private String category;
+    private String event;
 
     public Model() {
     }
@@ -31,6 +33,11 @@ public class Model implements Serializable {
     }
 
 
+    public String getEvent() {
+        return event;
+    }
 
-
+    public void setEvent(String event) {
+        this.event = event;
+    }
 }
