@@ -2,19 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="8dp" >
-
-
+    android:padding="8dp"
+    android:background="@drawable/label_club"
+    android:layout_margin="10dp">
     <!--  Title -->
     <TextView
         android:id="@+id/category"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-android:text="CLB Truyền thông Cóc Sài Gòn"
+        android:text="CLB Truyền thông Cóc Sài Gòn"
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="50dp"
         android:textSize="20sp"/>
-
 
     <!-- category-->
     <TextView
