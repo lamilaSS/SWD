@@ -128,4 +128,7 @@ public class MainActivity extends Activity {
     }
 
 
+    public void clickToBack(View view) {
+        finish();
+    }
 }

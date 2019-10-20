@@ -106,4 +106,8 @@ public class ListClubActivity extends Activity {
             pDialog = null;
         }
     }
+
+    public void clickToBack(View view) {
+        finish();
+    }
 }
