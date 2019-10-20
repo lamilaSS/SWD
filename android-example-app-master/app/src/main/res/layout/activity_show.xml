@@ -38,7 +38,7 @@
                     android:foreground="?android:attr/selectableItemBackground"
                     android:onClick="clickToBack"/>
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/club_id"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
@@ -46,27 +46,79 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
             </LinearLayout>
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="25sp"
-                android:textAlignment="center"
-                android:text="Cộng Đồng Sinh viên tình nguyện SitiGroup"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:textStyle="bold"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/club_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textAlignment="center"
+                    android:text="Cộng Đồng Sinh viên tình nguyện SitiGroup"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textStyle="bold"
                 />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textAlignment="center"
-                android:text="Câu Lạc Bộ Tình Nguyện"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="125dp">
+                    <TextView
+                        android:id="@+id/club_members"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        android:text="20"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        android:text=" members - "
+                        />
+                    <TextView
+                        android:id="@+id/club_activities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        android:text="20"
+                        />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        android:text=" activities"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/club_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textAlignment="center"
+                        android:text="Câu Lạc Bộ Tình Nguyện"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        />
+                </LinearLayout>
+            </LinearLayout>
             <Button
                 android:layout_marginTop="20dp"
                 android:layout_width="150dp"
@@ -85,10 +137,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/club_description"/>
         <ListView
             android:id="@+id/list"
             android:layout_width="fill_parent"

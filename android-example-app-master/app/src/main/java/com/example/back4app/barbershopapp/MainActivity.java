@@ -65,7 +65,9 @@ public class MainActivity extends Activity {
                                 Model model = new Model();
                                 model.setTitle(obj.getString("clubId"));
                                 model.setCategory(obj.getString("clubName"));
-
+                                model.setDescription(obj.getString("description"));
+                                model.setMembers(obj.getString("numberMemberOfClub"));
+                                model.setActivities(obj.getString("numberActivityOfClub"));
                                 // adding model to movies array
                                 modelList.add(model);
 
@@ -94,7 +96,10 @@ public class MainActivity extends Activity {
 
                 Intent intent = new Intent(MainActivity.this, ShowActivity.class);
                 intent.putExtra("clubId",((Model) listViewItem).getTitle());
-
+                intent.putExtra("clubName", ((Model) listViewItem).getCategory());
+                intent.putExtra("description", ((Model) listViewItem).getDescription());
+                intent.putExtra("members", ((Model) listViewItem).getMembers());
+                intent.putExtra("activities", ((Model) listViewItem).getActivities());
                 startActivity(intent);
 
             }

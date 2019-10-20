@@ -44,12 +44,20 @@ public class ShowActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list);
         adapter = new CustomAdapter(this, modelList);
         listView.setAdapter(adapter);
+
+        //Start: Get info from MainActivity
         Bundle bundle = getIntent().getExtras();
-        String clubName = bundle.getString("clubId");
+        String clubId = bundle.getString("clubId");
         String studentId = ParseUser.getCurrentUser().get("username").toString();
-        isStudentJoinedClub(clubName, studentId);
-        checkStatus(clubName, studentId);
-        JsonArrayRequest accReq = new JsonArrayRequest(url + clubName,
+        String clubName = bundle.getString("clubName");
+        String description = bundle.getString("description");
+        String members = bundle.getString("members");
+        String activities = bundle.getString("activities");
+        //End
+        setInfoClub(clubName,clubId,description, members, activities);
+        isStudentJoinedClub(clubId, studentId);
+        checkStatus(clubId, studentId);
+        JsonArrayRequest accReq = new JsonArrayRequest(url + clubId,
                       new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -64,7 +72,7 @@ public class ShowActivity extends AppCompatActivity {
                                 Model model = new Model();
                                 model.setTitle(obj.getString("clubId"));
                                 model.setCategory(obj.getString("activityName"));
-//
+
                                 // adding model to movies array
                                 modelList.add(model);
 
@@ -87,9 +95,21 @@ public class ShowActivity extends AppCompatActivity {
         }
         );
         App.getInstance().addToRequestQueue(accReq);
-        TextView des = findViewById(R.id.club_description);
-        des.setText(descrition);
         checkStatus(clubName, studentId);
+    }
+
+    //Set name for club onClick
+    private void setInfoClub(String clubName, String clubId, String description, String members, String activities){
+        TextView name = findViewById(R.id.club_name);
+        TextView id = findViewById(R.id.club_id);
+        TextView des = findViewById(R.id.club_description);
+        TextView mem = findViewById(R.id.club_members);
+        TextView act = findViewById(R.id.club_activities);
+        name.setText(clubName);
+        id.setText(clubId);
+        des.setText(description);
+        mem.setText(members);
+        act.setText(activities);
     }
 
     public void joinClub(View view) {
