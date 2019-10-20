@@ -10,6 +10,17 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:dividerHeight="1dp"
+        android:layout_weight="0"
         />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/action"
+        android:text="Join Club"
+        android:layout_alignParentBottom="true"
+        android:onClick="joinClub"
+        />
+
 
 </RelativeLayout>

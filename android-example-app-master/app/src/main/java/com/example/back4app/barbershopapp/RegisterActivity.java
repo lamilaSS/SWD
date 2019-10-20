@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -17,6 +18,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Button;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.facebook.AccessToken;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
@@ -37,6 +44,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 
@@ -62,6 +71,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.drawable.nullphoto);
         photo.setImageBitmap(bitmap);
+
+
 
         photo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,11 +212,14 @@ public class RegisterActivity extends AppCompatActivity {
                                         if (e == null) {
                                             ParseUser.logOut();
                                             alertDisplayer(getString(R.string.message_successful_creation), getString(R.string.please_verify), false,false);
+
+                                            sendWorkPostRequest();
                                         } else {
                                             ParseUser.logOut();
                                             alertDisplayer(getString(R.string.message_unsuccessful_creation), getString(R.string.not_created) + " :" + e.getMessage(), true, false);
                                         }
                                     }
+
                                 });
                             }
                             else{
@@ -285,6 +299,41 @@ public class RegisterActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void sendWorkPostRequest() {
+
+        try {
+            String URL = "https://swd391fa2019.azurewebsites.net/api/Student";
+            JSONObject jsonBody = new JSONObject();
+
+            jsonBody.put("studentId", usernameView.getText().toString());
+            jsonBody.put("pwd", passwordView.getText().toString());
+
+
+            JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.POST, URL, jsonBody, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+
+                    Toast.makeText(getApplicationContext(), "Response:  " + response.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                    onBackPressed();
+
+                }
+            }) {
+
+            };
+            App.getInstance().addToRequestQueue(jsonOblect);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        // Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_LONG).show();
+
     }
 
     private boolean isEmpty(EditText text) {

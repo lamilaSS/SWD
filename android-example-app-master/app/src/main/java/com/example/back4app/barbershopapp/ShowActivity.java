@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.android.volley.Response;
@@ -74,5 +75,8 @@ public class ShowActivity extends AppCompatActivity {
         }
         );
         App.getInstance().addToRequestQueue(accReq);
+    }
+
+    public void joinClub(View view) {
     }
 }
