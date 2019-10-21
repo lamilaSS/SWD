@@ -129,7 +129,7 @@ public class Tab2Profile extends Fragment {
         history_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), VisitsActivity.class);
+                Intent intent = new Intent(getActivity(), ShowAttendanceActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }
@@ -140,7 +140,7 @@ public class Tab2Profile extends Fragment {
         appointments_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ScheduledActivity.class);
+                Intent intent = new Intent(getActivity(), ShowAttendanceActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
             }

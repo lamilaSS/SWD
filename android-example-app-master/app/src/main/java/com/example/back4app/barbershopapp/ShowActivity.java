@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +35,8 @@ public class ShowActivity extends AppCompatActivity {
     private CustomAdapter adapter;
     private ProgressDialog pDialog;
     private String descrition;
+    private String memberId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +52,11 @@ public class ShowActivity extends AppCompatActivity {
         String clubName = bundle.getString("clubName");
         String description = bundle.getString("description");
         String members = bundle.getString("members");
+//        Toast.makeText(getApplicationContext(), "Response:  " + "Success" , Toast.LENGTH_SHORT).show();
         String activities = bundle.getString("activities");
-        //End
+        getMemberId(clubId);
+        Toast.makeText(getApplicationContext(),"Hello Javatpoint" + memberId ,Toast.LENGTH_SHORT).show();
+
         setInfoClub(clubName,clubId,description, members, activities);
         isStudentJoinedClub(clubId, studentId);
         checkStatus(clubId, studentId);
@@ -116,8 +119,9 @@ public class ShowActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         String clubName = bundle.getString("clubId");
         String studentId = ParseUser.getCurrentUser().get("username").toString();
+
         if(checkStatus(clubName, studentId)){
-            //do nothing
+            sendWorkPutRequest(memberId);
         } else {
             sendWorkPostRequest(clubName, studentId);
         }
@@ -176,7 +180,7 @@ public class ShowActivity extends AppCompatActivity {
 
     //Check student joined club
     private void isStudentJoinedClub(final String clubId, final String studentId){
-        String url = "https://swd391fa2019.azurewebsites.net/api/Member/clubId?clubId=" + clubId;
+        String url = "https://swd391fa2019.azurewebsites.net/api/Member/get-all-member-by-clubid?clubId=" + clubId;
         JsonArrayRequest accReq = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -214,21 +218,21 @@ public class ShowActivity extends AppCompatActivity {
         App.getInstance().addToRequestQueue(accReq);
     }
 
-    private void sendWorkPutRequest(String clubName, String studentId) {
+    private void sendWorkPutRequest(String memberId) {
 
         try {
-            String URL = "https://swd391fa2019.azurewebsites.net/api/Member/Join";
+            String URL = "https://swd391fa2019.azurewebsites.net/api/Member/delete";
             JSONObject jsonBody = new JSONObject();
 
-            jsonBody.put("clubId", clubName);
-            jsonBody.put("studentId", studentId);
+            jsonBody.put("memberId", memberId);
 
 
-            JsonObjectRequest jsonOblect = new JsonObjectRequest(Request.Method.POST, URL, jsonBody, new Response.Listener<JSONObject>() {
+
+            JsonObjectRequest jsonOblect2 = new JsonObjectRequest(Request.Method.DELETE, URL, jsonBody, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
 
-                    Toast.makeText(getApplicationContext(), "Response:  " + response.toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Response:  " + "Success", Toast.LENGTH_SHORT).show();
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -240,7 +244,7 @@ public class ShowActivity extends AppCompatActivity {
             }) {
 
             };
-            App.getInstance().addToRequestQueue(jsonOblect);
+            App.getInstance().addToRequestQueue(jsonOblect2);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -249,9 +253,41 @@ public class ShowActivity extends AppCompatActivity {
 
     }
 
+    private void getMemberId(String clubId){
+
+        String url = "https://swd391fa2019.azurewebsites.net/api/Member/" + ParseUser.getCurrentUser().get("username").toString() +"/" + clubId ;
+        JsonObjectRequest memReq = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.d(TAG, response.toString());
+
+                try {
+                    String memberId1 = response.getString("memberId");
+
+                    memberId = response.getString("memberId");
+                    Toast.makeText(getApplicationContext(),"Hello Javatpoint" + memberId ,Toast.LENGTH_SHORT).show();
+                    Log.d(TAG, response.getString("memberId"));
+                    Log.d(TAG, "ditme" +memberId );
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        App.getInstance().addToRequestQueue(memReq);
+
+    }
+
+
     public void clickToBack(View view) {
         Intent intent = new Intent(ShowActivity.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
+
 }
