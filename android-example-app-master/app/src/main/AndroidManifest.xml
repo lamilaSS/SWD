@@ -48,6 +48,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListClubActivity" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -68,9 +69,14 @@
         <meta-data
             android:name="com.parse.CLIENT_KEY"
             android:value="@string/back4app_client_key" />
-        <meta-data
+        <meta-data 
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+            android:value="@string/facebook_app_id"
+            />
+<provider
+    android:authorities="com.facebook.app.FacebookContentProvider198689570998793"
+    android:name="com.facebook.FacebookContentProvider"
+    android:exported="true"/>
         <meta-data
             android:name="com.parse.push.gcm_sender_id"
             android:value="id:277480073929" />
